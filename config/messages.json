@@ -1,0 +1,13 @@
+{
+  "exit_commands": ["exit", "quit", "q"],
+  "messages": {
+    "welcome": "Interactive Chat\nType your message and press Enter. Type 'exit' to quit.",
+    "goodbye": "Goodbye!",
+    "interrupted": "Interrupted.",
+    "connection_error": "Cannot connect to LLM server. Make sure LM Studio is running.",
+    "timeout_error": "Request timed out.",
+    "generic_error": "Error communicating with LLM: {error}",
+    "saving_conversation": "Saving conversation...",
+    "conversation_saved": "Conversation saved to {filename}"
+  }
+}

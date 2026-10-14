@@ -1,0 +1,26 @@
+{
+  "server": {
+    "url": "http://127.0.0.1:1234/v1/chat/completions",
+    "timeout": 120
+  },
+  "models": {
+    "available": ["gemma-2-1b-it", "Qwen2.5-Coder-7B-Instruct", "gemma-3-1B-it-qat"],
+    "default": "gemma-3-1B-it-qat"
+  },
+  "chat": {
+    "max_history": 10,
+    "temperature": 0.7,
+    "max_tokens": 1024
+  },
+  "ui": {
+    "typing_speed": 0.02,
+    "refresh_rate": 20
+  },
+  "security": {
+    "max_retries": 3,
+    "retry_delay": 1,
+    "max_message_length": 1000,
+    "rate_limit_requests": 10,
+    "rate_limit_window": 60
+  }
+}
