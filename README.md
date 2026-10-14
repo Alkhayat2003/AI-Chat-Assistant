@@ -1,38 +1,38 @@
-# مساعد الدردشة بالذكاء الاصطناعي
+# AI Chat Assistant
 
-تطبيق محادثة Python بواجهتين: سطر الأوامر وواجهة رسومية باستخدام Tkinter. يتصل بخادم محلي متوافق مع واجهة OpenAI، مثل LM Studio.
+A Python chat application with two interfaces: an interactive command-line interface and a Tkinter graphical interface. It connects to a local server that supports the OpenAI API, such as LM Studio.
 
-## المزايا
+## Features
 
-- التبديل بين النماذج المتاحة من الإعدادات.
-- حفظ المحادثات واستعادتها بصيغة JSON.
-- واجهة طرفية تفاعلية وواجهة رسومية.
-- إعدادات قابلة للتخصيص لعنوان الخادم والنموذج وحدود الرسائل.
-- إعادة المحاولة عند فشل الاتصال وتحديد معدل الطلبات.
+- Switch between models configured in the application.
+- Save and load conversations as JSON files.
+- Interactive terminal and graphical user interfaces.
+- Configurable server URL, model, and message limits.
+- Retry handling for failed requests and request rate limiting.
 
-## المتطلبات
+## Requirements
 
-- Python 3.8 أو أحدث.
-- LM Studio أو خادم محلي متوافق مع OpenAI API.
-- Tkinter للواجهة الرسومية. يأتي عادةً مع Python على Windows وmacOS؛ قد يلزم تثبيت حزمة Tkinter منفصلة على Linux.
+- Python 3.8 or later.
+- LM Studio or another local server compatible with the OpenAI API.
+- Tkinter for the graphical interface. It is usually included with Python on Windows and macOS; Linux may require installing a separate Tkinter package.
 
-## التثبيت
+## Installation
 
-استنسخ المشروع ثم انتقل إلى مجلده:
+Clone the repository and navigate to the project directory:
 
 ```bash
-git clone <رابط-المستودع>
-cd <مجلد-المشروع>
+git clone <repository-url>
+cd <project-directory>
 ```
 
-أنشئ بيئة افتراضية وثبّت التبعيات. على Windows PowerShell:
+Create a virtual environment and install the dependencies. On Windows PowerShell:
 
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-على Linux أو macOS:
+On Linux or macOS:
 
 ```bash
 python3 -m venv .venv
@@ -40,53 +40,53 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-## إعداد الخادم
+## Configure the Server
 
-1. شغّل خادماً محلياً في LM Studio وحمّل النموذج الذي تريد استخدامه.
-2. فعّل خادم LM Studio المحلي المتوافق مع OpenAI API. الإعداد الافتراضي للتطبيق هو `http://127.0.0.1:1234/v1/chat/completions`.
-3. عدّل `config/config.json` عند الحاجة. يجب أن تطابق أسماء `models.available` و`models.default` أسماء النماذج التي يقبلها الخادم.
-4. تحقق من أن النموذج الافتراضي موجود ضمن قائمة النماذج المتاحة.
+1. Start a local server in LM Studio and load the model you want to use.
+2. Enable LM Studio's local server with OpenAI API compatibility. The application defaults to `http://127.0.0.1:1234/v1/chat/completions`.
+3. Edit `config/config.json` as needed. The names in `models.available` and `models.default` must match model names accepted by your server.
+4. Make sure the default model is included in the available models list.
 
-يمكن تغيير عنوان الخادم والمهلة والنموذج الافتراضي وإعدادات المحادثة والأمان والواجهة من `config/config.json`.
+The server URL, timeout, default model, chat parameters, security limits, and UI settings can all be changed in `config/config.json`.
 
-## التشغيل
+## Run the Application
 
-ابدأ الواجهة الطرفية:
+Start the terminal interface:
 
 ```bash
 python app.py
 ```
 
-أو ابدأ الواجهة الرسومية:
+Or start the graphical interface:
 
 ```bash
 python app.py --gui
 ```
 
-في Windows يمكن استخدام `py` بدلاً من `python`.
+On Windows, you can use `py` instead of `python`.
 
-أوامر الواجهة الطرفية:
+Terminal commands:
 
-- `model <name>` للتبديل إلى نموذج متاح.
-- `save` لحفظ المحادثة.
-- `exit` أو `quit` أو `q` للخروج مع حفظ المحادثة.
+- `model <name>` switches to an available model.
+- `save` saves the current conversation.
+- `exit`, `quit`, or `q` exits and saves the conversation.
 
-## بنية المشروع
+## Project Structure
 
 ```text
-app.py                 نقطة تشغيل التطبيق
-ai_model/model.py      الاتصال بخادم النموذج وإدارة المحادثة
-config/config.json     إعدادات التطبيق
-config/messages.json   رسائل الواجهة
-ui/terminal.py         واجهة سطر الأوامر
-ui/gui.py              واجهة Tkinter
-requirements.txt       مكتبات Python المطلوبة
+app.py                 Application entry point
+ai_model/model.py      Model server communication and conversation handling
+config/config.json     Application settings
+config/messages.json   UI messages
+ui/terminal.py         Command-line interface
+ui/gui.py              Tkinter graphical interface
+requirements.txt       Python dependencies
 ```
 
-## الخصوصية
+## Privacy
 
-تُحفظ المحادثة محلياً في `conversation.json`. هذا الملف مستثنى من Git عبر `.gitignore` كي لا يُرفع سجل محادثاتك إلى المستودع بالخطأ.
+Conversations are saved locally in `conversation.json`. This file is excluded from Git through `.gitignore` to help prevent chat history from being uploaded to the repository accidentally.
 
-## الترخيص
+## License
 
-لم يُحدد ترخيص للمشروع بعد. أضف ملف `LICENSE` بالترخيص الذي تختاره قبل نشر المستودع إذا أردت منح الآخرين حقوق الاستخدام أو التعديل أو التوزيع.
+No license has been selected for this project yet. Add a `LICENSE` file with your chosen license before publishing if you want to grant others permission to use, modify, or distribute the project.
