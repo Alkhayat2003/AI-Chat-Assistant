@@ -89,4 +89,4 @@ Conversations are saved locally in `conversation.json`. This file is excluded fr
 
 ## License
 
-No license has been selected for this project yet. Add a `LICENSE` file with your chosen license before publishing if you want to grant others permission to use, modify, or distribute the project.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for the full text.
